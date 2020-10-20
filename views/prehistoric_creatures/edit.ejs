@@ -1,0 +1,15 @@
+<h1>Edit this creature?</h1>
+<%= myCreatures.type %> <img src='<%-myCreatures.img_url%>'>
+
+<form method="POST" action="/prehistoric_creatures">
+    <label for="imgURL">Name</label>
+    <input id="imgURL" type="text" name="type">
+
+    <label for="creatureName">Image URL</label>
+    <input id="creatureName" type="text" name="img_url">
+
+    <input type="submit">
+</form>
+
+
+
