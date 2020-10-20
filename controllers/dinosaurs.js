@@ -40,6 +40,15 @@ router.get('/new', (req, res)=>{
     res.render('dinosaurs/new')
 })
 
+router.get('/:idx', (req, res)=>{
+    let dinosaurs = fs.readFileSync('./dinosaurs.json')
+    let dinoData = JSON.parse(dinosaurs)
+
+    let dinoIndex = parseInt(req.params.idx)
+
+    res.render('dinosaurs/show', {myDinos: dinoData[dinoIndex]})
+})
+
 
 
 

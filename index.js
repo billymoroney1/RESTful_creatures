@@ -25,17 +25,6 @@ app.get('/prehistoric_creatures', (req, res)=>{
     res.render('prehistoric_creatures/index', {myCreatures: creatureData})
 })
 
-// app.post('/dinosaurs', (req, res)=>{
-//     let dinosaurs = fs.readFileSync('./dinosaurs.json')
-//     dinosaurs = JSON.parse(dinosaurs)
-
-//     dinosaurs.push(req.body)
-
-//     fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinosaurs))
-
-//     res.redirect('/dinosaurs')
-// })
-
 // POST ROUTE
 
 app.post('/prehistoric_creatures', (req, res)=>{
@@ -51,9 +40,6 @@ app.post('/prehistoric_creatures', (req, res)=>{
 
 //NEW/READ (GET) ROUTE
 
-// app.get('/dinosaurs/new', (req, res)=>{
-//     res.render('dinosaurs/new')
-// })
 
 app.get('/prehistoric_creatures/new', (req, res)=>{
     res.render('prehistoric_creatures/new')
@@ -68,27 +54,16 @@ app.get('/prehistoric_creatures/:idx', (req, res)=>{
     res.render('prehistoric_creatures/show', {myCreatures: creatureData[creatureIndex]})
 })
 
-// form to edit certain creature
-
-//need to somehow edit the creatureData array with the form response and reload instead of pushing?
-
 // SHOW/READ (GET) ROUTE
 
-app.get('/dinosaurs/:idx', (req, res)=>{
-    let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    let dinoData = JSON.parse(dinosaurs)
+// app.get('/dinosaurs/:idx', (req, res)=>{
+//     let dinosaurs = fs.readFileSync('./dinosaurs.json')
+//     let dinoData = JSON.parse(dinosaurs)
 
-    let dinoIndex = parseInt(req.params.idx)
+//     let dinoIndex = parseInt(req.params.idx)
 
-    res.render('dinosaurs/show', {myDinos: dinoData[dinoIndex]})
-})
-
-// app.get('/prehistoric_creatures/edit/:idx', (req, res)=>{
-//     let creatures = fs.readFileSync('./prehistoric_creatures.json')
-//     let creatureData = JSON.parse(creatures)
-
-//     let creatureIndex = parseInt(req.params.idx)
-//     res.render('prehistoric_creatures/edit', {myCreatures: creatureData[creatureIndex]})
+//     res.render('dinosaurs/show', {myDinos: dinoData[dinoIndex]})
 // })
+
 
 
