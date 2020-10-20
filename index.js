@@ -16,28 +16,28 @@ app.get('/', (req, res)=>{
     res.render('home')
 })
 
-// app.use('/dinosaurs', require('./controllers/dinosaurs'))
+app.use('/dinosaurs', require('./controllers/dinosaurs'))
 // app.use('/prehistoric_creatures', require('./controllers/prehistoric_creatures'))
 
 
 //SHOW READ
 
-app.get('/dinosaurs', (req, res)=>{
-    let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    let dinoData = JSON.parse(dinosaurs)
-    console.log(dinoData)
+// app.get('/dinosaurs', (req, res)=>{
+//     let dinosaurs = fs.readFileSync('./dinosaurs.json')
+//     let dinoData = JSON.parse(dinosaurs)
+//     console.log(dinoData)
 
-    //handle a query string if there is one
-    console.log("Req. query is "+req.query.nameFilter)
-    let nameFilter = req.query.nameFilter
-    if(nameFilter){ // reassign dinoData to only be an array of dinos whose name matches the query string name (and make it ignore case)
-        dinoData = dinoData.filter(dino=>{
-          return dino.name.toLowerCase() === nameFilter.toLowerCase()  
-        })
-    }
+//     //handle a query string if there is one
+//     console.log("Req. query is "+req.query.nameFilter)
+//     let nameFilter = req.query.nameFilter
+//     if(nameFilter){ // reassign dinoData to only be an array of dinos whose name matches the query string name (and make it ignore case)
+//         dinoData = dinoData.filter(dino=>{
+//           return dino.name.toLowerCase() === nameFilter.toLowerCase()  
+//         })
+//     }
 
-    res.render('dinosaurs/index', {myDinos:dinoData})
-})
+//     res.render('dinosaurs/index', {myDinos:dinoData})
+// })
 
 app.get('/prehistoric_creatures', (req, res)=>{
     let prehistoricCreatures = fs.readFileSync('./prehistoric_creatures.json')
@@ -47,11 +47,11 @@ app.get('/prehistoric_creatures', (req, res)=>{
 
 // INDEX/READ (GET) ROUTE
 
-app.get('/dinosaurs', (req, res)=>{
-    let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    let dinoData = JSON.parse(dinosaurs)
-    res.render('dinosaurs/index', {myDinos: dinoData})
-})
+// app.get('/dinosaurs', (req, res)=>{
+//     let dinosaurs = fs.readFileSync('./dinosaurs.json')
+//     let dinoData = JSON.parse(dinosaurs)
+//     res.render('dinosaurs/index', {myDinos: dinoData})
+// })
 
 app.post('/dinosaurs', (req, res)=>{
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
