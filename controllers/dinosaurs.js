@@ -25,6 +25,21 @@ router.get('/', (req, res)=>{
     res.render('dinosaurs/index', {myDinos: dinoData})
 })
 
+router.post('/', (req, res)=>{
+    let dinosaurs = fs.readFileSync('./dinosaurs.json')
+    dinosaurs = JSON.parse(dinosaurs)
+
+    dinosaurs.push(req.body)
+
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinosaurs))
+
+    res.redirect('dinosaurs')
+})
+
+router.get('/new', (req, res)=>{
+    res.render('dinosaurs/new')
+})
+
 
 
 

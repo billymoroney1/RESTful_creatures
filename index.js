@@ -19,50 +19,22 @@ app.get('/', (req, res)=>{
 app.use('/dinosaurs', require('./controllers/dinosaurs'))
 // app.use('/prehistoric_creatures', require('./controllers/prehistoric_creatures'))
 
-
-//SHOW READ
-
-// app.get('/dinosaurs', (req, res)=>{
-//     let dinosaurs = fs.readFileSync('./dinosaurs.json')
-//     let dinoData = JSON.parse(dinosaurs)
-//     console.log(dinoData)
-
-//     //handle a query string if there is one
-//     console.log("Req. query is "+req.query.nameFilter)
-//     let nameFilter = req.query.nameFilter
-//     if(nameFilter){ // reassign dinoData to only be an array of dinos whose name matches the query string name (and make it ignore case)
-//         dinoData = dinoData.filter(dino=>{
-//           return dino.name.toLowerCase() === nameFilter.toLowerCase()  
-//         })
-//     }
-
-//     res.render('dinosaurs/index', {myDinos:dinoData})
-// })
-
 app.get('/prehistoric_creatures', (req, res)=>{
     let prehistoricCreatures = fs.readFileSync('./prehistoric_creatures.json')
     let creatureData = JSON.parse(prehistoricCreatures)
     res.render('prehistoric_creatures/index', {myCreatures: creatureData})
 })
 
-// INDEX/READ (GET) ROUTE
-
-// app.get('/dinosaurs', (req, res)=>{
+// app.post('/dinosaurs', (req, res)=>{
 //     let dinosaurs = fs.readFileSync('./dinosaurs.json')
-//     let dinoData = JSON.parse(dinosaurs)
-//     res.render('dinosaurs/index', {myDinos: dinoData})
+//     dinosaurs = JSON.parse(dinosaurs)
+
+//     dinosaurs.push(req.body)
+
+//     fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinosaurs))
+
+//     res.redirect('/dinosaurs')
 // })
-
-app.post('/dinosaurs', (req, res)=>{
-    let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    dinosaurs = JSON.parse(dinosaurs)
-
-    dinosaurs.push(req.body)
-
-    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinosaurs))
-
-    res.redirect('/dinosaurs')
-})
 
 // POST ROUTE
 
@@ -79,9 +51,9 @@ app.post('/prehistoric_creatures', (req, res)=>{
 
 //NEW/READ (GET) ROUTE
 
-app.get('/dinosaurs/new', (req, res)=>{
-    res.render('dinosaurs/new')
-})
+// app.get('/dinosaurs/new', (req, res)=>{
+//     res.render('dinosaurs/new')
+// })
 
 app.get('/prehistoric_creatures/new', (req, res)=>{
     res.render('prehistoric_creatures/new')
